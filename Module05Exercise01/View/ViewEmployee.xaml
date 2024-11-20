@@ -4,171 +4,169 @@
              xmlns:local="clr-namespace:Module05Exercise01.ViewModel"
              x:Class="Module05Exercise01.View.ViewEmployee"
              Title="View Employee"
-             BackgroundColor="#E3F2FD">
-    <!-- Light sky blue background -->
+             BackgroundColor="SkyBlue">
 
     <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15" BackgroundColor="#E3F2FD">
-            <!-- Consistent with page background -->
+        <VerticalStackLayout Padding="20" Spacing="15">
 
-            <!-- Title -->
             <Label Text="Employee Information"
-                   FontSize="28"
+                   FontSize="24"
                    FontAttributes="Bold"
-                   TextColor="#0D47A1" 
+                   TextColor="#2F4F4F"
                    HorizontalOptions="Center"
                    Margin="0, 20, 0, 10"/>
 
-                <!-- SearchBar with a light blue accent -->
-                <SearchBar Placeholder="Search by Name, Address, Email, or Contact"
+            <SearchBar Placeholder="Search by Name, Address, Email, or Contact"
                        Text="{Binding SearchText}"
-                       BackgroundColor="#BBDEFB" 
-                       TextColor="#0D47A1"
-                       PlaceholderColor="White"
+                       BackgroundColor="White"
+                       TextColor="Black"
+                       PlaceholderColor="Gray"
                        HorizontalOptions="FillAndExpand"
                        Margin="0,0,0,10"/>
 
-                    <!-- Employee List Frame -->
-                    <Frame BackgroundColor="#FFFFFF"
-                           CornerRadius="15"
-                           HasShadow="True"
-                           BorderColor="#90CAF9">
-                        <!-- Blue border -->
-                        <ListView ItemsSource="{Binding FilteredEmployeeList}"
-                                  HasUnevenRows="True"
-                                  SeparatorColor="#E3F2FD">
-                            <!-- Very light blue -->
-                            <ListView.ItemTemplate>
-                                <DataTemplate>
-                                    <ViewCell>
-                                        <StackLayout Padding="10" BackgroundColor="#E3F2FD">
-                                            <!-- Display Name -->
-                                            <Label Text="{Binding Name}"
-                                                   FontSize="18"
-                                                   FontAttributes="Bold"
-                                                   TextColor="#0D47A1"/>
-                                            <!-- Separator -->
-                                            <BoxView HeightRequest="1"
-                                             BackgroundColor="#90CAF9"
+            <!-- ListView for Employee Details -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="15"
+                   HasShadow="True">
+                <ListView ItemsSource="{Binding FilteredEmployeeList}"
+                          HasUnevenRows="True"
+                          SeparatorColor="#dcdcdc">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10">
+                                    <Label Text="{Binding Name}"
+                                           FontSize="18"
+                                           FontAttributes="Bold"
+                                           TextColor="#4682B4"/>
+                                    <BoxView HeightRequest="1"
+                                             BackgroundColor="#dcdcdc"
                                              Margin="0, 5"/>
 
-                                            <!-- Display Address with Label -->
-                                            <Label Text="Address:"
-                                             TextColor="White"/>
-                                            <Label Text="{Binding Address}"
-                                             FontSize="14"
-                                             TextColor="#0D47A1"/>
-                                            <BoxView HeightRequest="1"
-                                             BackgroundColor="#90CAF9"
+                                    <Label Text="Address:"
+                                           TextColor="#808080"/>
+                                    <Label Text="{Binding Address}"
+                                           FontSize="14"
+                                           TextColor="#2F4F4F"/>
+                                    <BoxView HeightRequest="1"
+                                             BackgroundColor="#dcdcdc"
                                              Margin="0, 5"/>
 
-                                            <!-- Display Email -->
-                                            <Label Text="Email:"
-                                             TextColor="#1E88E5"/>
-                                            <Label Text="{Binding Email}"
-                                             FontSize="14"
-                                             TextColor="#0D47A1"/>
-                                            <BoxView HeightRequest="1"
-                                             BackgroundColor="#90CAF9"
+                                    <Label Text="Email:"
+                                           TextColor="#808080"/>
+                                    <Label Text="{Binding Email}"
+                                           FontSize="14"
+                                           TextColor="#2F4F4F"/>
+                                    <BoxView HeightRequest="1"
+                                             BackgroundColor="#dcdcdc"
                                              Margin="0, 5"/>
 
-                                            <!-- Display Contact -->
-                                            <Label Text="Contact:"
-                                             TextColor="#1E88E5"/>
-                                            <Label Text="{Binding ContactNo}"
-                                             FontSize="14"
-                                           TextColor="#0D47A1"/>
-                                        </StackLayout>
-                                    </ViewCell>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </Frame>
+                                    <Label Text="Contact Number:"
+                                           TextColor="#808080"/>
+                                    <Label Text="{Binding ContactNo}"
+                                           FontSize="14"
+                                           TextColor="#2F4F4F"/>
+                                    <BoxView HeightRequest="1"
+                                             BackgroundColor="#dcdcdc"
+                                             Margin="0, 5"/>
+                                    <StackLayout.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                          Command="{Binding Source={RelativeSource AncestorType={x:Type local:EmployeeViewModel}},
+                                           Path=SelectedEmployeeCommand}"
+                                             CommandParameter="{Binding .}"/>
+                                    </StackLayout.GestureRecognizers>
 
-                    <!-- Load Data Button -->
-                    <Button Text="Load Data"
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Frame>
+
+            <!-- Load Data Button -->
+            <Button Text="Load Data"
                     Command="{Binding LoadDataCommand}"
-                    BackgroundColor="DarkBlue" 
-                    TextColor="#FFFFFF"
+                    BackgroundColor="DarkBlue"
+                    TextColor="White"
+                    CornerRadius="25"
+                    Padding="10"
                     FontAttributes="Bold"
-                    CornerRadius="10"
                     HorizontalOptions="Fill"/>
 
-                  <!-- Connection Status -->
-                  <Label x:Name="ConnectionStatusLabel"
+            <!-- Connection Status -->
+            <Label x:Name="ConnectionStatusLabel"
                    Text="{Binding StatusMessage}"
                    FontSize="18"
-                   TextColor="#1565C0"
+                   TextColor="#4682B4"
                    HorizontalOptions="Center"
-                   FontAttributes="Italic"
                    Margin="0, 20, 0, 0"/>
 
-                  <!-- Add/Modify Employee Section -->
-                  <Label Text="Add/Modify Employee"
-                   FontSize="22"
+            <!-- Add New Employee Section -->
+            <Label Text="Add/Modify Employee"
+                   FontSize="20"
                    FontAttributes="Bold"
-                   TextColor="#0D47A1"
+                   TextColor="#4682B4"
                    Margin="0, 30, 0, 10"/>
 
-                  <!-- Input Fields with soft blue tones -->
-                  <Entry Placeholder="Name"
+            <Entry Placeholder="Name"
                    Text="{Binding NewEmployeeName}"
-                   BackgroundColor="#BBDEFB"
-                   TextColor="#0D47A1"
-                   PlaceholderColor="#90CAF9"
+                   BackgroundColor="White"
+                   TextColor="#333"
+                   PlaceholderColor="#B0B0B0"
                    Margin="0, 5"/>
 
-                  <Entry Placeholder="Address"
+            <Entry Placeholder="Address"
                    Text="{Binding NewEmployeeAddress}"
-                   BackgroundColor="#BBDEFB"
-                   TextColor="#0D47A1"
-                   PlaceholderColor="#90CAF9"
+                   BackgroundColor="White"
+                   TextColor="#333"
+                   PlaceholderColor="#B0B0B0"
                    Margin="0, 5"/>
-            
-                  <Entry Placeholder="Email"
+
+            <Entry Placeholder="Email"
                    Text="{Binding NewEmployeeEmail}"
-                   BackgroundColor="#BBDEFB"
-                   TextColor="#0D47A1"
-                   PlaceholderColor="#90CAF9"
+                   BackgroundColor="White"
+                   TextColor="#333"
+                   PlaceholderColor="#B0B0B0"
                    Margin="0, 5"/>
 
-                  <Entry Placeholder="Contact Number"
+            <Entry Placeholder="Contact Number"
                    Text="{Binding NewEmployeeContactNo}"
-                   BackgroundColor="#BBDEFB"
-                   TextColor="#0D47A1"
-                   PlaceholderColor="#90CAF9"
+                   BackgroundColor="White"
+                   TextColor="#333"
+                   PlaceholderColor="#B0B0B0"
                    Margin="0, 5"/>
 
-                       <!-- Add/Update/Delete Buttons Section -->
-                       <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 20, 0, 0">
-                       <Button Text="Add Employee"
+            <!-- Add and Delete Buttons Section -->
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 20, 0, 0">
+                <Button Text="Add Employee"
                         Command="{Binding AddEmployeeCommand}"
+                        IsEnabled="{Binding IsEmployeeSelected}" 
                         BackgroundColor="DarkBlue"
-                        TextColor="#FFFFFF"
+                        TextColor="White"
                         FontAttributes="Bold"
-                        CornerRadius="10"
+                        CornerRadius="20"
                         Padding="10, 5"/>
 
-                       <Button Text="Update Employee" 
+                <Button Text="Update Employee" 
                         Command="{Binding UpdateEmployeeCommand}" 
                         IsEnabled="{Binding IsEmployeeSelected}" 
                         BackgroundColor="DarkBlue" 
                         FontAttributes="Bold"
-                        TextColor="#FFFFFF"
-                        CornerRadius="10"
+                        TextColor="White"
+                        CornerRadius="20"
                         Padding="10, 5"
                         Margin="10, 0, 0, 0"/>
 
-                       <Button Text="Delete Employee"
+                <Button Text="Delete Employee"
                         Command="{Binding DeleteEmployeeCommand}"
                         IsEnabled="{Binding IsEmployeeSelected}"
-                        BackgroundColor="#EF5350" 
-                        TextColor="#FFFFFF"
+                        BackgroundColor="DarkRed"
+                        TextColor="White"
                         FontAttributes="Bold"
-                        CornerRadius="10"
+                        CornerRadius="20"
                         Padding="10, 5"
                         Margin="10, 0, 0, 0"/>
-                      </StackLayout>
+            </StackLayout>
 
         </VerticalStackLayout>
     </ScrollView>

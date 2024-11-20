@@ -5,11 +5,11 @@ namespace Module05Exercise01.View;
 
 public partial class ViewEmployee : ContentPage
 {
-	public ViewEmployee()
-	{
-		InitializeComponent();
+    public ViewEmployee()
+    {
+        InitializeComponent();
 
-		var employeeViewModel = new EmployeeViewModel();
-		BindingContext = employeeViewModel;
-	}
+        var employeeViewModel = new EmployeeViewModel();
+        BindingContext = employeeViewModel;
+    }
 }
