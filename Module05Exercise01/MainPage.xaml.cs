@@ -27,7 +27,7 @@ namespace Module05Exercise01
                 {
                     await connection.OpenAsync();
                     ConnectionStatusLabel.Text = "Connection Success!";
-                    ConnectionStatusLabel.TextColor = Colors.Green;
+                    ConnectionStatusLabel.TextColor = Colors.Lime;
                 }
             }
             catch (Exception ex)
