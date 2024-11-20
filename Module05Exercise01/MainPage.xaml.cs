@@ -26,7 +26,7 @@ namespace Module05Exercise01
                 using (var connection = new MySqlConnection(connectionString))
                 {
                     await connection.OpenAsync();
-                    ConnectionStatusLabel.Text = "Connection SUCCESS YEAH!";
+                    ConnectionStatusLabel.Text = "Connection Success!";
                     ConnectionStatusLabel.TextColor = Colors.Green;
                 }
             }
