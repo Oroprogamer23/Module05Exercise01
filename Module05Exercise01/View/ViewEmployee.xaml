@@ -24,7 +24,7 @@
                        Text="{Binding SearchText}"
                        BackgroundColor="#BBDEFB" 
                        TextColor="#0D47A1"
-                       PlaceholderColor="#90CAF9"
+                       PlaceholderColor="White"
                        HorizontalOptions="FillAndExpand"
                        Margin="0,0,0,10"/>
 
@@ -54,7 +54,7 @@
 
                                             <!-- Display Address with Label -->
                                             <Label Text="Address:"
-                                             TextColor="#1E88E5"/>
+                                             TextColor="White"/>
                                             <Label Text="{Binding Address}"
                                              FontSize="14"
                                              TextColor="#0D47A1"/>
@@ -74,7 +74,6 @@
 
                                             <!-- Display Contact -->
                                             <Label Text="Contact:"
-                                             FontAttributes="Italic"
                                              TextColor="#1E88E5"/>
                                             <Label Text="{Binding ContactNo}"
                                              FontSize="14"
@@ -89,7 +88,7 @@
                     <!-- Load Data Button -->
                     <Button Text="Load Data"
                     Command="{Binding LoadDataCommand}"
-                    BackgroundColor="#1976D2" 
+                    BackgroundColor="DarkBlue" 
                     TextColor="#FFFFFF"
                     FontAttributes="Bold"
                     CornerRadius="10"
@@ -144,7 +143,7 @@
                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0, 20, 0, 0">
                        <Button Text="Add Employee"
                         Command="{Binding AddEmployeeCommand}"
-                        BackgroundColor="#1976D2"
+                        BackgroundColor="DarkBlue"
                         TextColor="#FFFFFF"
                         FontAttributes="Bold"
                         CornerRadius="10"
@@ -153,7 +152,7 @@
                        <Button Text="Update Employee" 
                         Command="{Binding UpdateEmployeeCommand}" 
                         IsEnabled="{Binding IsEmployeeSelected}" 
-                        BackgroundColor="#42A5F5" 
+                        BackgroundColor="DarkBlue" 
                         FontAttributes="Bold"
                         TextColor="#FFFFFF"
                         CornerRadius="10"
